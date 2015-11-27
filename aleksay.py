@@ -10,9 +10,11 @@ quotes=["Então mano...","Deixa eu terminar!","WOOOOSAH","Porra Ciro!","Falei!",
 def alek():
 	ballon="___________  __________"
 	ballon_footer="\/"
-	print ballon.center( len(header_line) , " " )
-	print ballon_footer.center( len(header_line) , " " )
-	print """
+	ballon='{s:{c}^{n}}'.format(s=ballon,n=len(header_line),c=' ')
+	print(ballon)
+	ballon_footer='{s:{c}^{n}}'.format(s=ballon_footer,n=len(header_line),c=' ')
+	print(ballon_footer)
+	print ("""
        |\\\\\\\\\\\\\\  !
        ||      )
        || ~~  ~~
@@ -23,28 +25,29 @@ def alek():
        |__  |         | ]]]
    __ /__/\/_\__      | / )
   /             \\     /  /
-	"""
+	""")
 
 # frase por parâmetro
 def quote():
 	q=sys.argv[1:]
 	if len(q) > 0:
-		print " ".join(q).center( len(header_line) , " " )
+		print(" ".join(q).center( len(header_line) , " " ))
 	else:
 		print_random_quote()
 
 # frase randomica
 def print_random_quote():
 	quote=random.choice(quotes)
-	print quote.center( len(header_line) , " " )
+	quote='{s:{c}^{n}}'.format(s=quote,n=len(header_line),c=' ')
+	print(quote)
 
 # main
 def main():
-	print
+	print("")
 	quote()
 	alek()
-	print header_line
-	print
+	print(header_line)
+	print("")
 
 # main
 if __name__ == "__main__":
