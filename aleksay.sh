@@ -29,7 +29,7 @@ echo "     |\\\\\\\\\\\\\\\\ !
 }
 
 default_messages=(
-	"Ent„o mano..."
+	"Ent√£o mano..."
 	"Deixa eu terminar!"
 	"WOOOOSAH"
 	"Porra Ciro!"
