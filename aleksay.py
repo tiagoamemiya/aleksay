@@ -4,7 +4,7 @@
 import  random, sys
 
 header_line="|||||||||||||| ALEKSAY ||||||||||||||"
-quotes=["Então mano...","Deixa eu terminar!","WOOOOSAH","Porra Ciro!","Falei!","Posso usar seu terminal?"]
+quotes=open("messages.txt").read().split("\n")
 
 # Alek
 def alek():

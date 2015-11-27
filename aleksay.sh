@@ -28,15 +28,8 @@ echo "     |\\\\\\\\\\\\\\\\ !
 "
 }
 
-default_messages=(
-	"Então mano..."
-	"Deixa eu terminar!"
-	"WOOOOSAH"
-	"Porra Ciro!"
-	"Falei!"
-	"Posso usar seu terminal?"
-)
-
+IFS=$'\n' default_messages=($(cat messages.txt))
+unset IFS
 total_items=${#default_messages[@]}
 let total_items-=1
 index=$( shuf -i 0-$(eval echo $total_items) -n 1 )
