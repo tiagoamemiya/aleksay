@@ -17,18 +17,18 @@ def alek():
        ||      )
        || ~~  ~~
        (5  - |-|
-       ||    J | 
-       ||  /\\\\\\\\
-       |||||||||
-       |__  |
-   __ /__/\/_\__
-  /             \\
+       ||    J |
+       ||  /\\\\\\\\      ||
+       |||||||||      ||
+       |__  |         | ]]]
+   __ /__/\/_\__      | / )
+  /             \\     /  /
 	"""
 
 # frase por parâmetro
 def quote():
 	q=sys.argv[1:]
-	if len(q) > 0:		
+	if len(q) > 0:
 		print " ".join(q).center( len(header_line) , " " )
 	else:
 		print_random_quote()
@@ -36,7 +36,7 @@ def quote():
 # frase randomica
 def print_random_quote():
 	quote=random.choice(quotes)
-	print quote.center( len(header_line) , " " )	
+	print quote.center( len(header_line) , " " )
 
 # main
 def main():
