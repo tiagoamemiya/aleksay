@@ -28,13 +28,21 @@ echo "     |\\\\\\\\\\\\\\\\ !
 "
 }
 
-IFS=$'\n' default_messages=($(cat messages.txt))
-unset IFS
-total_items=${#default_messages[@]}
-let total_items-=1
-index=$( shuf -i 0-$(eval echo $total_items) -n 1 )
+if [[ ! -z "$1" ]]
+	then
+	message=$1
+elif [ -f 'messages.txt' ]
+	then
+	IFS=$'\n' default_messages=($(cat messages.txt))
+	unset IFS
+	total_items=${#default_messages[@]}
+	let total_items-=1
+	index=$( shuf -i 0-$(eval echo $total_items) -n 1 )
+	message=${default_messages[index]}
+else
+	message='...'
+fi
 
-[[ ! -z "$1" ]] && message=$1 || message=${default_messages[index]}
 
 show_ballon "$message"
 show_alek
