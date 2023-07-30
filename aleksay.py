@@ -1,21 +1,28 @@
 #!/usr/bin/python
 # encoding: utf-8
 
-import  random, sys
+import random
+import sys
 
-header_line="|||||||||||||| ALEKSAY ||||||||||||||"
-quotes=open("messages.txt").read().split("\n")
-quotes=filter(bool, quotes)
+from os import path
 
-# Alek
+header_line = "|||||||||||||| ALEKSAY ||||||||||||||"
+lformat = f'^{len(header_line)+1}'
+
+with open(path.join(path.dirname(__file__), 'messages.txt')) as f:
+    quotes = f.readlines()
+
+quotes = list([x.strip() for x in quotes if x])
+
 def alek():
-    ballon="___________  __________"
-    ballon_footer="\/"
-    ballon='{s:{c}^{n}}'.format(s=ballon,n=len(header_line),c=' ')
-    print(ballon)
-    ballon_footer='{s:{c}^{n}}'.format(s=ballon_footer,n=len(header_line),c=' ')
-    print(ballon_footer)
-    print ("""
+    baloon = "___________  __________"
+    baloon_footer = "\/"
+
+    result = ""
+    result += f'{quote():{lformat}}\n'
+    result += f'{baloon:{lformat}}\n'
+    result += f'{baloon_footer:{lformat}}\n'
+    result += """
        |\\\\\\\\\\\\\\  !
        ||      )
        || ~~  ~~
@@ -25,31 +32,25 @@ def alek():
        |||||||||      ||
        |__  |         | ]]]
    __ /__/\/_\__      | / )
-  /             \\     /  /
-    """)
+  /             \\     /  /\n
+"""
+    result += header_line
 
-# frase por parâmetro
+    return result
+
 def quote():
-    q=sys.argv[1:]
-    if len(q) > 0:
-        print(" ".join(q).center( len(header_line) , " " ))
-    else:
-        print_random_quote()
-
-# frase randomica
-def print_random_quote():
-    quote=random.choice(quotes)
-    quote='{s:{c}^{n}}'.format(s=quote,n=len(header_line),c=' ')
-    print(quote)
+    return random.choice(quotes)
 
 # main
 def main():
     print("")
-    quote()
-    alek()
-    print(header_line)
+    print(alek())
     print("")
 
 # main
 if __name__ == "__main__":
+    q = sys.argv[1:]
+    if len(q) > 0:
+        quotes = [' '.join(q)]
+
     main()
