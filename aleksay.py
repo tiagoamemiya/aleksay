@@ -39,13 +39,6 @@ def alek():
     return result
 
 def quote():
-    q = sys.argv[1:]
-    if len(q) > 0:
-        return ' '.join(q)
-
-    return random_quote()
-
-def random_quote():
     return random.choice(quotes)
 
 # main
@@ -56,4 +49,8 @@ def main():
 
 # main
 if __name__ == "__main__":
+    q = sys.argv[1:]
+    if len(q) > 0:
+        quotes = [' '.join(q)]
+
     main()
