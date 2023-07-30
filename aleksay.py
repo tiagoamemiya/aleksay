@@ -1,12 +1,15 @@
 #!/usr/bin/python
 # encoding: utf-8
 
-import  random, sys
+import random
+import sys
+
+from os import path
 
 header_line = "|||||||||||||| ALEKSAY ||||||||||||||"
 lformat = f'^{len(header_line)+1}'
 
-with open('messages.txt') as f:
+with open(path.join(path.dirname(__file__), 'messages.txt')) as f:
     quotes = f.readlines()
 
 quotes = list([x.strip() for x in quotes if x])
@@ -15,10 +18,11 @@ def alek():
     baloon = "___________  __________"
     baloon_footer = "\/"
 
-    print(f'{quote():{lformat}}')
-    print(f'{baloon:{lformat}}')
-    print(f'{baloon_footer:{lformat}}')
-    print("""
+    result = ""
+    result += f'{quote():{lformat}}\n'
+    result += f'{baloon:{lformat}}\n'
+    result += f'{baloon_footer:{lformat}}\n'
+    result += """
        |\\\\\\\\\\\\\\  !
        ||      )
        || ~~  ~~
@@ -28,8 +32,11 @@ def alek():
        |||||||||      ||
        |__  |         | ]]]
    __ /__/\/_\__      | / )
-  /             \\     /  /
-    """)
+  /             \\     /  /\n
+"""
+    result += header_line
+
+    return result
 
 def quote():
     q = sys.argv[1:]
@@ -44,8 +51,7 @@ def random_quote():
 # main
 def main():
     print("")
-    alek()
-    print(header_line)
+    print(alek())
     print("")
 
 # main

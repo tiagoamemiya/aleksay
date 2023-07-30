@@ -1,6 +1,6 @@
 # aleksay
 
-Version Python >= 2.6: python3.4 aleksay.py Your word
+Version Python >= 3.7 aleksay.py Your word
 
 Version Shell: ./aleksay.sh "Your word"
 
