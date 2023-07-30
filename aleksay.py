@@ -3,19 +3,22 @@
 
 import  random, sys
 
-header_line="|||||||||||||| ALEKSAY ||||||||||||||"
-quotes=open("messages.txt").read().split("\n")
-quotes=filter(bool, quotes)
+header_line = "|||||||||||||| ALEKSAY ||||||||||||||"
+lformat = f'^{len(header_line)+1}'
 
-# Alek
+with open('messages.txt') as f:
+    quotes = f.readlines()
+
+quotes = list([x.strip() for x in quotes if x])
+
 def alek():
-    ballon="___________  __________"
-    ballon_footer="\/"
-    ballon='{s:{c}^{n}}'.format(s=ballon,n=len(header_line),c=' ')
-    print(ballon)
-    ballon_footer='{s:{c}^{n}}'.format(s=ballon_footer,n=len(header_line),c=' ')
-    print(ballon_footer)
-    print ("""
+    baloon = "___________  __________"
+    baloon_footer = "\/"
+
+    print(f'{quote():{lformat}}')
+    print(f'{baloon:{lformat}}')
+    print(f'{baloon_footer:{lformat}}')
+    print("""
        |\\\\\\\\\\\\\\  !
        ||      )
        || ~~  ~~
@@ -28,24 +31,19 @@ def alek():
   /             \\     /  /
     """)
 
-# frase por parâmetro
 def quote():
-    q=sys.argv[1:]
+    q = sys.argv[1:]
     if len(q) > 0:
-        print(" ".join(q).center( len(header_line) , " " ))
-    else:
-        print_random_quote()
+        return ' '.join(q)
 
-# frase randomica
-def print_random_quote():
-    quote=random.choice(quotes)
-    quote='{s:{c}^{n}}'.format(s=quote,n=len(header_line),c=' ')
-    print(quote)
+    return random_quote()
+
+def random_quote():
+    return random.choice(quotes)
 
 # main
 def main():
     print("")
-    quote()
     alek()
     print(header_line)
     print("")
